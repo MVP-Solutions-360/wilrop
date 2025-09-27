@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos - Wilrop Colombia Travel</title>
+    <meta name="description" content="Catálogo de productos turísticos - Wilrop Colombia Travel">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-container">
+                        <img src="imagenes/logos/wilrop_vertical.png" alt="Wilrop Colombia Travel" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Wilrop Colombia Travel</h1>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="dominicana.html" class="nav-link">República Dominicana</a></li>
+                    <li><a href="colombia.html" class="nav-link">Colombia</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="products.html" class="nav-link active">Productos</a></li>
+                    <li><a href="admin.html" class="nav-link">Admin</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="login.html" class="nav-link login-btn">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Products Section -->
+    <section class="products-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Nuestros Productos</h2>
+                <p>Descubre nuestras ofertas turísticas entre República Dominicana y Antioquia</p>
+            </div>
+            
+            <!-- Filtros -->
+            <div class="filters-container">
+                <div class="filters-header">
+                    <h3><i class="fas fa-filter"></i> Filtrar Productos</h3>
+                    <button onclick="limpiarFiltros()" class="btn btn-secondary btn-small">
+                        <i class="fas fa-times"></i> Limpiar
+                    </button>
+                </div>
+                
+                <form id="filtrosForm" class="filters-form">
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label for="filtroDestino">Destino:</label>
+                            <select id="filtroDestino" name="filtroDestino">
+                                <option value="">Todos los destinos</option>
+                                <option value="republica-dominicana">República Dominicana</option>
+                                <option value="antioquia">Antioquia, Colombia</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="filtroTipo">Tipo:</label>
+                            <select id="filtroTipo" name="filtroTipo">
+                                <option value="">Todos los tipos</option>
+                                <option value="paquete">Paquete Turístico</option>
+                                <option value="vuelo">Vuelo</option>
+                                <option value="hotel">Hospedaje</option>
+                                <option value="tour">Tour/Excursión</option>
+                            </select>
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="precioMin">Precio Mínimo (USD):</label>
+                            <input type="number" id="precioMin" name="precioMin" min="0" step="0.01" placeholder="0">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="precioMax">Precio Máximo (USD):</label>
+                            <input type="number" id="precioMax" name="precioMax" min="0" step="0.01" placeholder="10000">
+                        </div>
+                    </div>
+                    
+                    <div class="filters-row">
+                        <div class="filter-group">
+                            <label for="duracionMin">Duración Mínima (días):</label>
+                            <input type="number" id="duracionMin" name="duracionMin" min="1" placeholder="1">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="duracionMax">Duración Máxima (días):</label>
+                            <input type="number" id="duracionMax" name="duracionMax" min="1" placeholder="30">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="buscarTexto">Buscar:</label>
+                            <input type="text" id="buscarTexto" name="buscarTexto" placeholder="Nombre o descripción...">
+                        </div>
+                        
+                        <div class="filter-group">
+                            <label for="ordenarPor">Ordenar por:</label>
+                            <select id="ordenarPor" name="ordenarPor">
+                                <option value="nombre">Nombre</option>
+                                <option value="precio-asc">Precio (Menor a Mayor)</option>
+                                <option value="precio-desc">Precio (Mayor a Menor)</option>
+                                <option value="duracion-asc">Duración (Menor a Mayor)</option>
+                                <option value="duracion-desc">Duración (Mayor a Menor)</option>
+                                <option value="fecha-desc">Más Recientes</option>
+                            </select>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            
+            <!-- Estadísticas -->
+            <div class="stats-container">
+                <div class="stat-card">
+                    <i class="fas fa-box"></i>
+                    <div>
+                        <h4 id="totalProductos">0</h4>
+                        <p>Productos Totales</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <div>
+                        <h4 id="productosDominicana">0</h4>
+                        <p>República Dominicana</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-mountain"></i>
+                    <div>
+                        <h4 id="productosAntioquia">0</h4>
+                        <p>Antioquia, Colombia</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <div>
+                        <h4 id="precioPromedio">$0</h4>
+                        <p>Precio Promedio</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Lista de Productos -->
+            <div class="products-container">
+                <div class="products-header">
+                    <h3>Resultados</h3>
+                    <div class="view-controls">
+                        <button onclick="cambiarVista('grid')" class="view-btn active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </button>
+                        <button onclick="cambiarVista('list')" class="view-btn" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="productosLista" class="products-grid">
+                    <!-- Los productos se cargarán dinámicamente aquí -->
+                </div>
+                
+                <div id="sinResultados" class="no-results" style="display: none;">
+                    <i class="fas fa-search"></i>
+                    <h3>No se encontraron productos</h3>
+                    <p>Intenta ajustar los filtros o crear un nuevo producto.</p>
+                    <a href="admin.html" class="btn btn-primary">Crear Producto</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para ver detalles del producto -->
+    <div id="productoModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modalTitulo">Detalles del Producto</h3>
+                <span class="close" onclick="cerrarModal()">&times;</span>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Contenido del modal se cargará dinámicamente -->
+            </div>
+            <div class="modal-footer">
+                <button onclick="cerrarModal()" class="btn btn-secondary">Cerrar</button>
+                <button onclick="editarProducto()" class="btn btn-primary">Editar</button>
+                <button onclick="eliminarProductoModal()" class="btn btn-danger">Eliminar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wilrop Colombia Travel</h3>
+                    <p>Especialistas en turismo entre República Dominicana y Antioquia, Colombia. Tu agencia de confianza para experiencias únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#destinos">Destinos</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="products.html">Productos</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +1 (809) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@wilropcolombia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wilrop Colombia Travel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+    <script>
+        // Variables específicas para products.html
+        let productosFiltrados = [];
+        let vistaActual = 'grid';
+        let productoSeleccionado = null;
+
+        // Inicializar página de productos
+        document.addEventListener('DOMContentLoaded', function() {
+            cargarProductos();
+            setupFiltros();
+            actualizarEstadisticas();
+        });
+
+        // Configurar filtros
+        function setupFiltros() {
+            const filtrosForm = document.getElementById('filtrosForm');
+            const inputs = filtrosForm.querySelectorAll('input, select');
+            
+            inputs.forEach(input => {
+                input.addEventListener('input', aplicarFiltros);
+                input.addEventListener('change', aplicarFiltros);
+            });
+        }
+
+        // Aplicar filtros
+        function aplicarFiltros() {
+            const formData = new FormData(document.getElementById('filtrosForm'));
+            const filtros = Object.fromEntries(formData);
+            
+            productosFiltrados = productos.filter(producto => {
+                // Filtro por destino
+                if (filtros.filtroDestino && producto.destino !== filtros.filtroDestino) {
+                    return false;
+                }
+                
+                // Filtro por tipo
+                if (filtros.filtroTipo && producto.tipo !== filtros.filtroTipo) {
+                    return false;
+                }
+                
+                // Filtro por precio
+                if (filtros.precioMin && producto.precio < parseFloat(filtros.precioMin)) {
+                    return false;
+                }
+                if (filtros.precioMax && producto.precio > parseFloat(filtros.precioMax)) {
+                    return false;
+                }
+                
+                // Filtro por duración
+                if (filtros.duracionMin && producto.duracion < parseInt(filtros.duracionMin)) {
+                    return false;
+                }
+                if (filtros.duracionMax && producto.duracion > parseInt(filtros.duracionMax)) {
+                    return false;
+                }
+                
+                // Filtro por texto
+                if (filtros.buscarTexto) {
+                    const texto = filtros.buscarTexto.toLowerCase();
+                    const nombre = producto.nombre.toLowerCase();
+                    const descripcion = producto.descripcion.toLowerCase();
+                    if (!nombre.includes(texto) && !descripcion.includes(texto)) {
+                        return false;
+                    }
+                }
+                
+                return true;
+            });
+            
+            // Ordenar productos
+            ordenarProductos(filtros.ordenarPor);
+            
+            // Mostrar resultados
+            mostrarProductos();
+            actualizarEstadisticas();
+        }
+
+        // Ordenar productos
+        function ordenarProductos(orden) {
+            switch(orden) {
+                case 'precio-asc':
+                    productosFiltrados.sort((a, b) => a.precio - b.precio);
+                    break;
+                case 'precio-desc':
+                    productosFiltrados.sort((a, b) => b.precio - a.precio);
+                    break;
+                case 'duracion-asc':
+                    productosFiltrados.sort((a, b) => a.duracion - b.duracion);
+                    break;
+                case 'duracion-desc':
+                    productosFiltrados.sort((a, b) => b.duracion - a.duracion);
+                    break;
+                case 'fecha-desc':
+                    productosFiltrados.sort((a, b) => new Date(b.fechaCreacion) - new Date(a.fechaCreacion));
+                    break;
+                default:
+                    productosFiltrados.sort((a, b) => a.nombre.localeCompare(b.nombre));
+            }
+        }
+
+        // Mostrar productos
+        function mostrarProductos() {
+            const container = document.getElementById('productosLista');
+            const sinResultados = document.getElementById('sinResultados');
+            
+            if (productosFiltrados.length === 0) {
+                container.style.display = 'none';
+                sinResultados.style.display = 'block';
+                return;
+            }
+            
+            container.style.display = 'grid';
+            sinResultados.style.display = 'none';
+            
+            container.className = vistaActual === 'grid' ? 'products-grid' : 'products-list';
+            
+            container.innerHTML = productosFiltrados.map(producto => {
+                if (vistaActual === 'grid') {
+                    return crearTarjetaProducto(producto);
+                } else {
+                    return crearFilaProducto(producto);
+                }
+            }).join('');
+        }
+
+        // Crear tarjeta de producto
+        function crearTarjetaProducto(producto) {
+            return `
+                <div class="producto-card" onclick="verDetallesProducto(${producto.id})">
+                    <div class="producto-header">
+                        <div class="producto-tipo ${producto.tipo}">
+                            <i class="fas ${getIconoTipo(producto.tipo)}"></i>
+                            ${getTipoName(producto.tipo)}
+                        </div>
+                        <div class="producto-destino ${producto.destino}">
+                            ${getDestinoName(producto.destino)}
+                        </div>
+                    </div>
+                    <div class="producto-content">
+                        <h4>${producto.nombre}</h4>
+                        <p class="producto-descripcion">${producto.descripcion.substring(0, 100)}...</p>
+                        <div class="producto-details">
+                            <div class="detail-item">
+                                <i class="fas fa-clock"></i>
+                                <span>${producto.duracion} días</span>
+                            </div>
+                            ${producto.capacidad ? `
+                                <div class="detail-item">
+                                    <i class="fas fa-users"></i>
+                                    <span>${producto.capacidad} personas</span>
+                                </div>
+                            ` : ''}
+                        </div>
+                    </div>
+                    <div class="producto-footer">
+                        <div class="producto-precio">
+                            <span class="precio">$${producto.precio.toFixed(2)}</span>
+                            <span class="moneda">USD</span>
+                        </div>
+                        <button class="btn btn-primary btn-small">Ver Detalles</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Crear fila de producto
+        function crearFilaProducto(producto) {
+            return `
+                <div class="producto-row" onclick="verDetallesProducto(${producto.id})">
+                    <div class="producto-info">
+                        <h4>${producto.nombre}</h4>
+                        <p>${producto.descripcion.substring(0, 150)}...</p>
+                    </div>
+                    <div class="producto-meta">
+                        <span class="destino">${getDestinoName(producto.destino)}</span>
+                        <span class="tipo">${getTipoName(producto.tipo)}</span>
+                        <span class="duracion">${producto.duracion} días</span>
+                    </div>
+                    <div class="producto-precio">
+                        <span class="precio">$${producto.precio.toFixed(2)} USD</span>
+                    </div>
+                    <div class="producto-actions">
+                        <button class="btn btn-primary btn-small">Ver</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Obtener icono según tipo
+        function getIconoTipo(tipo) {
+            const iconos = {
+                'paquete': 'fa-suitcase',
+                'vuelo': 'fa-plane',
+                'hotel': 'fa-bed',
+                'tour': 'fa-map-marked-alt'
+            };
+            return iconos[tipo] || 'fa-box';
+        }
+
+        // Ver detalles del producto
+        function verDetallesProducto(id) {
+            productoSeleccionado = productos.find(p => p.id === id);
+            if (!productoSeleccionado) return;
+            
+            const modal = document.getElementById('productoModal');
+            const titulo = document.getElementById('modalTitulo');
+            const body = document.getElementById('modalBody');
+            
+            titulo.textContent = productoSeleccionado.nombre;
+            
+            body.innerHTML = `
+                <div class="producto-detalle">
+                    <div class="detalle-header">
+                        <div class="detalle-tipo ${productoSeleccionado.tipo}">
+                            <i class="fas ${getIconoTipo(productoSeleccionado.tipo)}"></i>
+                            ${getTipoName(productoSeleccionado.tipo)}
+                        </div>
+                        <div class="detalle-destino ${productoSeleccionado.destino}">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${getDestinoName(productoSeleccionado.destino)}
+                        </div>
+                    </div>
+                    
+                    <div class="detalle-content">
+                        <div class="detalle-info">
+                            <h4>Descripción</h4>
+                            <p>${productoSeleccionado.descripcion}</p>
+                            
+                            <div class="detalle-specs">
+                                <div class="spec-item">
+                                    <i class="fas fa-clock"></i>
+                                    <span><strong>Duración:</strong> ${productoSeleccionado.duracion} días</span>
+                                </div>
+                                ${productoSeleccionado.capacidad ? `
+                                    <div class="spec-item">
+                                        <i class="fas fa-users"></i>
+                                        <span><strong>Capacidad:</strong> ${productoSeleccionado.capacidad} personas</span>
+                                    </div>
+                                ` : ''}
+                                <div class="spec-item">
+                                    <i class="fas fa-calendar"></i>
+                                    <span><strong>Creado:</strong> ${new Date(productoSeleccionado.fechaCreacion).toLocaleDateString()}</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="detalle-precio">
+                            <div class="precio-principal">
+                                <span class="precio">$${productoSeleccionado.precio.toFixed(2)}</span>
+                                <span class="moneda">USD</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    ${productoSeleccionado.incluye && productoSeleccionado.incluye.length > 0 ? `
+                        <div class="detalle-incluye">
+                            <h4><i class="fas fa-check-circle"></i> Incluye</h4>
+                            <ul>
+                                ${productoSeleccionado.incluye.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                    
+                    ${productoSeleccionado.noIncluye && productoSeleccionado.noIncluye.length > 0 ? `
+                        <div class="detalle-no-incluye">
+                            <h4><i class="fas fa-times-circle"></i> No Incluye</h4>
+                            <ul>
+                                ${productoSeleccionado.noIncluye.map(item => `<li>${item}</li>`).join('')}
+                            </ul>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+            
+            modal.style.display = 'block';
+        }
+
+        // Cerrar modal
+        function cerrarModal() {
+            document.getElementById('productoModal').style.display = 'none';
+            productoSeleccionado = null;
+        }
+
+        // Cambiar vista
+        function cambiarVista(vista) {
+            vistaActual = vista;
+            
+            // Actualizar botones
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector(`[data-view="${vista}"]`).classList.add('active');
+            
+            // Actualizar contenedor
+            const container = document.getElementById('productosLista');
+            container.className = vista === 'grid' ? 'products-grid' : 'products-list';
+            
+            mostrarProductos();
+        }
+
+        // Limpiar filtros
+        function limpiarFiltros() {
+            document.getElementById('filtrosForm').reset();
+            productosFiltrados = [...productos];
+            mostrarProductos();
+            actualizarEstadisticas();
+        }
+
+        // Actualizar estadísticas
+        function actualizarEstadisticas() {
+            const total = productosFiltrados.length;
+            const dominicana = productosFiltrados.filter(p => p.destino === 'republica-dominicana').length;
+            const antioquia = productosFiltrados.filter(p => p.destino === 'antioquia').length;
+            const precioPromedio = total > 0 ? productosFiltrados.reduce((sum, p) => sum + p.precio, 0) / total : 0;
+            
+            document.getElementById('totalProductos').textContent = total;
+            document.getElementById('productosDominicana').textContent = dominicana;
+            document.getElementById('productosAntioquia').textContent = antioquia;
+            document.getElementById('precioPromedio').textContent = `$${precioPromedio.toFixed(2)}`;
+        }
+
+        // Cerrar modal al hacer clic fuera
+        window.onclick = function(event) {
+            const modal = document.getElementById('productoModal');
+            if (event.target === modal) {
+                cerrarModal();
+            }
+        }
+    </script>
+</body>
+</html>

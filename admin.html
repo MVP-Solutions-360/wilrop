@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administración - Wilrop Colombia Travel</title>
+    <meta name="description" content="Panel de administración para crear productos turísticos - Wilrop Colombia Travel">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-container">
+                        <img src="imagenes/logos/wilrop_vertical.png" alt="Wilrop Colombia Travel" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Wilrop Colombia Travel</h1>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="dominicana.html" class="nav-link">República Dominicana</a></li>
+                    <li><a href="colombia.html" class="nav-link">Colombia</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="admin.html" class="nav-link active">Admin</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="login.html" class="nav-link login-btn">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Admin Section -->
+    <section class="admin-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Panel de Administración</h2>
+                <p>Gestiona tus productos turísticos de manera sencilla</p>
+            </div>
+            
+            <div class="admin-content">
+                <!-- Formulario de Nuevo Producto -->
+                <div class="form-container admin-form-container">
+                    <h3><i class="fas fa-plus-circle"></i> Agregar Nuevo Producto</h3>
+                    <form id="productoForm" class="admin-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nombreProducto">Nombre del Producto:</label>
+                                <input type="text" id="nombreProducto" name="nombreProducto" required placeholder="Ej: Paquete Punta Cana 7 días">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="destinoProducto">Destino:</label>
+                                <select id="destinoProducto" name="destinoProducto" required>
+                                    <option value="">Seleccionar destino</option>
+                                    <option value="republica-dominicana">República Dominicana</option>
+                                    <option value="antioquia">Antioquia, Colombia</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="tipoProducto">Tipo de Producto:</label>
+                                <select id="tipoProducto" name="tipoProducto" required>
+                                    <option value="">Seleccionar tipo</option>
+                                    <option value="paquete">Paquete Turístico</option>
+                                    <option value="vuelo">Vuelo</option>
+                                    <option value="hotel">Hospedaje</option>
+                                    <option value="tour">Tour/Excursión</option>
+                                </select>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="precioProducto">Precio (USD):</label>
+                                <input type="number" id="precioProducto" name="precioProducto" min="0" step="0.01" required placeholder="0.00">
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="duracionProducto">Duración (días):</label>
+                                <input type="number" id="duracionProducto" name="duracionProducto" min="1" required placeholder="1">
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="capacidadProducto">Capacidad Máxima:</label>
+                                <input type="number" id="capacidadProducto" name="capacidadProducto" min="1" placeholder="Número de personas">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="descripcionProducto">Descripción:</label>
+                            <textarea id="descripcionProducto" name="descripcionProducto" rows="4" required placeholder="Describe detalladamente el producto..."></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="incluyeProducto">Incluye:</label>
+                            <textarea id="incluyeProducto" name="incluyeProducto" rows="3" placeholder="Separar cada item con punto y coma (;) - Ej: Vuelo ida y vuelta; Hotel 4 estrellas; Desayuno incluido"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="noIncluyeProducto">No Incluye:</label>
+                            <textarea id="noIncluyeProducto" name="noIncluyeProducto" rows="2" placeholder="Separar cada item con punto y coma (;) - Ej: Almuerzos; Bebidas alcohólicas; Propinas"></textarea>
+                        </div>
+                        
+                        <div class="form-actions">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="fas fa-save"></i> Guardar Producto
+                            </button>
+                            <button type="reset" class="btn btn-secondary">
+                                <i class="fas fa-undo"></i> Limpiar Formulario
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Panel de Acciones Rápidas -->
+                <div class="admin-panel">
+                    <h3><i class="fas fa-tools"></i> Acciones Rápidas</h3>
+                    <div class="quick-actions">
+                        <a href="products.html" class="action-card">
+                            <i class="fas fa-eye"></i>
+                            <h4>Ver Productos</h4>
+                            <p>Visualizar y gestionar productos existentes</p>
+                        </a>
+                        
+                        <button onclick="exportarProductos()" class="action-card">
+                            <i class="fas fa-download"></i>
+                            <h4>Exportar</h4>
+                            <p>Descargar lista de productos</p>
+                        </button>
+                        
+                        <label for="importarArchivo" class="action-card">
+                            <i class="fas fa-upload"></i>
+                            <h4>Importar</h4>
+                            <p>Cargar productos desde archivo</p>
+                            <input type="file" id="importarArchivo" accept=".json" style="display: none;" onchange="importarProductos(event)">
+                        </label>
+                        
+                        <button onclick="limpiarProductos()" class="action-card danger">
+                            <i class="fas fa-trash"></i>
+                            <h4>Limpiar Todo</h4>
+                            <p>Eliminar todos los productos</p>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wilrop Colombia Travel</h3>
+                    <p>Especialistas en turismo entre República Dominicana y Antioquia, Colombia. Tu agencia de confianza para experiencias únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="index.html#destinos">Destinos</a></li>
+                        <li><a href="index.html#servicios">Servicios</a></li>
+                        <li><a href="products.html">Productos</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +1 (809) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@wilropcolombia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wilrop Colombia Travel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>

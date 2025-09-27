@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detalle del Producto - Wilrop Colombia Travel</title>
+    <meta name="description" content="Descubre todos los detalles de nuestros paquetes turísticos. Información completa, videos y experiencias únicas.">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-container">
+                        <img src="imagenes/logos/wilrop_vertical.png" alt="Wilrop Colombia Travel" class="logo-image">
+                        <div class="logo-text">
+                            <h1>Wilrop Colombia Travel</h1>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Inicio</a></li>
+                    <li><a href="dominicana.html" class="nav-link">República Dominicana</a></li>
+                    <li><a href="colombia.html" class="nav-link">Colombia</a></li>
+                    <li><a href="index.html#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="products.html" class="nav-link">Productos</a></li>
+                    <li><a href="admin.html" class="nav-link">Admin</a></li>
+                    <li><a href="index.html#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="login.html" class="nav-link login-btn">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="index.html">Inicio</a>
+                <i class="fas fa-chevron-right"></i>
+                <a href="products.html">Productos</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="productBreadcrumb">Detalle del Producto</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail-section">
+        <div class="container">
+            <div class="product-detail-grid">
+                <!-- Columna 1: Video -->
+                <div class="product-video-column">
+                    <div class="video-container">
+                        <div class="video-player" id="videoPlayer">
+                            <video controls poster="imagenes/destinos/colombia/antioquia/guatape/guatape1.png" preload="metadata">
+                                <source src="imagenes/destinos/colombia/antioquia/guatape/Guatape.mp4" type="video/mp4">
+                                Tu navegador no soporta el elemento de video.
+                            </video>
+                        </div>
+                    </div>
+                    
+                    <!-- Información adicional del video -->
+                    <div class="video-info">
+                        <h4>Información del Video</h4>
+                        <ul>
+                            <li><i class="fas fa-play-circle"></i> Video promocional de Guatapé</li>
+                            <li><i class="fas fa-calendar"></i> Fecha: Enero 2025</li>
+                            <li><i class="fas fa-map-marker-alt"></i> Ubicación: Guatapé, Antioquia</li>
+                            <li><i class="fas fa-video"></i> Calidad: HD</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Información Principal -->
+                <div class="product-info-column">
+                    <div class="product-header">
+                        <div class="product-badge" id="productBadge">Paquete Premium</div>
+                        <h1 id="productTitle">Aventura en Guatapé</h1>
+                        <div class="product-rating">
+                            <div class="stars">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                            </div>
+                            <span class="rating-text">4.9 (127 reseñas)</span>
+                        </div>
+                    </div>
+
+                    <div class="product-description">
+                        <h3>Descripción</h3>
+                        <p id="productDescription">
+                            Descubre la magia de Guatapé, uno de los destinos más hermosos de Antioquia. 
+                            Este paquete incluye escalada al Peñón de Guatapé, paseo en lancha por el embalse, 
+                            y visita al pueblo colorido que parece sacado de un cuento de hadas.
+                        </p>
+                    </div>
+
+                    <div class="product-highlights">
+                        <h3>Destacados</h3>
+                        <div class="highlights-grid">
+                            <div class="highlight-item">
+                                <i class="fas fa-mountain"></i>
+                                <span>Escalada al Peñón</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-ship"></i>
+                                <span>Paseo en Lancha</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-camera"></i>
+                                <span>Fotos Panorámicas</span>
+                            </div>
+                            <div class="highlight-item">
+                                <i class="fas fa-utensils"></i>
+                                <span>Comida Típica</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Columna 3: Información de Reserva -->
+                <div class="product-booking-column">
+                    <div class="booking-card">
+                        <div class="price-section">
+                            <div class="price">
+                                <span class="currency">$</span>
+                                <span class="amount" id="productPrice">450.000</span>
+                                <span class="period">por persona</span>
+                            </div>
+                            <div class="price-note">
+                                <i class="fas fa-info-circle"></i>
+                                Precio final, sin cargos ocultos
+                            </div>
+                        </div>
+
+                        <div class="booking-form">
+                            <h4>Reservar Ahora</h4>
+                            
+                            <div class="form-group">
+                                <label>Fecha de Salida</label>
+                                <input type="date" id="departureDate" class="form-input">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Número de Personas</label>
+                                <div class="quantity-selector">
+                                    <button type="button" onclick="changeQuantity(-1)">-</button>
+                                    <input type="number" id="quantity" value="1" min="1" max="10" readonly>
+                                    <button type="button" onclick="changeQuantity(1)">+</button>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Tipo de Habitación</label>
+                                <select id="roomType" class="form-select">
+                                    <option value="standard">Estándar</option>
+                                    <option value="superior">Superior</option>
+                                    <option value="deluxe">Deluxe</option>
+                                </select>
+                            </div>
+
+                            <div class="total-price">
+                                <div class="total-line">
+                                    <span>Subtotal:</span>
+                                    <span id="subtotal">$450.000</span>
+                                </div>
+                                <div class="total-line">
+                                    <span>Impuestos:</span>
+                                    <span id="taxes">$45.000</span>
+                                </div>
+                                <div class="total-line total">
+                                    <span>Total:</span>
+                                    <span id="totalPrice">$495.000</span>
+                                </div>
+                            </div>
+
+                            <button class="btn btn-primary btn-full" onclick="proceedToBooking()">
+                                <i class="fas fa-calendar-check"></i>
+                                Reservar Ahora
+                            </button>
+
+                            <div class="booking-features">
+                                <div class="feature">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <span>Cancelación Gratuita</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-credit-card"></i>
+                                    <span>Pago Seguro</span>
+                                </div>
+                                <div class="feature">
+                                    <i class="fas fa-headset"></i>
+                                    <span>Soporte 24/7</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de Información Adicional (3 columnas completas) -->
+            <div class="additional-info-section">
+                <div class="additional-info-grid">
+                    <!-- Información Detallada -->
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-info-circle"></i>
+                            <h3>Información Detallada</h3>
+                        </div>
+                        <div class="info-content">
+                            <div class="info-item">
+                                <strong>Duración:</strong> 2 días / 1 noche
+                            </div>
+                            <div class="info-item">
+                                <strong>Incluye:</strong> Transporte, alojamiento, comidas, guía turístico
+                            </div>
+                            <div class="info-item">
+                                <strong>No incluye:</strong> Bebidas alcohólicas, propinas, gastos personales
+                            </div>
+                            <div class="info-item">
+                                <strong>Dificultad:</strong> Moderada
+                            </div>
+                            <div class="info-item">
+                                <strong>Edad mínima:</strong> 8 años
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Itinerario -->
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-route"></i>
+                            <h3>Itinerario</h3>
+                        </div>
+                        <div class="info-content">
+                            <div class="itinerary-item">
+                                <div class="itinerary-time">08:00</div>
+                                <div class="itinerary-content">
+                                    <strong>Salida desde Medellín</strong>
+                                    <p>Recogida en hotel y traslado a Guatapé</p>
+                                </div>
+                            </div>
+                            <div class="itinerary-item">
+                                <div class="itinerary-time">10:30</div>
+                                <div class="itinerary-content">
+                                    <strong>Llegada a Guatapé</strong>
+                                    <p>Recorrido por el pueblo y almuerzo</p>
+                                </div>
+                            </div>
+                            <div class="itinerary-item">
+                                <div class="itinerary-time">14:00</div>
+                                <div class="itinerary-content">
+                                    <strong>Escalada al Peñón</strong>
+                                    <p>Subida de 740 escalones con vistas espectaculares</p>
+                                </div>
+                            </div>
+                            <div class="itinerary-item">
+                                <div class="itinerary-time">16:30</div>
+                                <div class="itinerary-content">
+                                    <strong>Paseo en Lancha</strong>
+                                    <p>Recorrido por el embalse de Guatapé</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Políticas -->
+                    <div class="info-card">
+                        <div class="info-header">
+                            <i class="fas fa-file-contract"></i>
+                            <h3>Políticas</h3>
+                        </div>
+                        <div class="info-content">
+                            <div class="policy-item">
+                                <h4>Canceliación</h4>
+                                <p>Cancelación gratuita hasta 48 horas antes del viaje</p>
+                            </div>
+                            <div class="policy-item">
+                                <h4>Modificaciones</h4>
+                                <p>Cambios de fecha permitidos hasta 24 horas antes</p>
+                            </div>
+                            <div class="policy-item">
+                                <h4>Reembolsos</h4>
+                                <p>Reembolso completo en caso de cancelación por clima</p>
+                            </div>
+                            <div class="policy-item">
+                                <h4>Seguro</h4>
+                                <p>Seguro de viaje incluido en todos los paquetes</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wilrop Colombia Travel</h3>
+                    <p>Especialistas en turismo entre República Dominicana y Colombia. Tu agencia de confianza para experiencias únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinos</h4>
+                    <ul>
+                        <li><a href="dominicana.html">República Dominicana</a></li>
+                        <li><a href="colombia.html">Colombia</a></li>
+                        <li><a href="colombia.html#antioquia">Antioquia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="index.html">Inicio</a></li>
+                        <li><a href="products.html">Productos</a></li>
+                        <li><a href="admin.html">Admin</a></li>
+                        <li><a href="index.html#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +1 (809) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@wilropcolombia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wilrop Colombia Travel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
