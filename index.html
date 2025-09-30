@@ -39,6 +39,8 @@
                 </div>
             </div>
         </nav>
+        <!-- Overlay para menú móvil -->
+        <div class="mobile-menu-overlay"></div>
     </header>
 
     <!-- Hero Section -->
@@ -156,6 +158,10 @@
             <div class="section-header">
                 <h2>Contacto</h2>
                 <p>Estamos aquí para ayudarte a planificar tu viaje perfecto</p>
+                <p class="whatsapp-info">
+                    <i class="fab fa-whatsapp"></i> 
+                    Los mensajes se envían directamente a nuestro WhatsApp para una respuesta más rápida
+                </p>
             </div>
             <div class="contacto-content">
                 <div class="contacto-info">
@@ -177,7 +183,8 @@
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
                             <h4>Ubicación</h4>
-                            <p>Santo Domingo, República Dominicana</p>
+                            <a href="https://maps.app.goo.gl/RAmgwxr4waLiwnqH7" target="_blank" class="map-link">Medellín, Colombia
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -207,7 +214,9 @@
                         <label for="mensaje">Mensaje:</label>
                         <textarea id="mensaje" name="mensaje" rows="5" required></textarea>
                     </div>
-                    <button type="submit" class="btn btn-primary">Enviar Mensaje</button>
+                    <button type="submit" class="btn btn-primary">
+                        <i class="fab fa-whatsapp"></i> Enviar por WhatsApp
+                    </button>
                 </form>
             </div>
         </div>

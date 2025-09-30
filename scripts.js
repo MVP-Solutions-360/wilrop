@@ -20,12 +20,25 @@ function setupNavigation() {
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');
     const navLinks = document.querySelectorAll('.nav-link');
+    const overlay = document.querySelector('.mobile-menu-overlay');
 
     // Toggle del menú móvil
     if (hamburger) {
         hamburger.addEventListener('click', function() {
             hamburger.classList.toggle('active');
             navMenu.classList.toggle('active');
+            if (overlay) {
+                overlay.classList.toggle('active');
+            }
+        });
+    }
+
+    // Cerrar menú al hacer clic en el overlay
+    if (overlay) {
+        overlay.addEventListener('click', function() {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            overlay.classList.remove('active');
         });
     }
 
@@ -34,6 +47,9 @@ function setupNavigation() {
         link.addEventListener('click', function() {
             hamburger.classList.remove('active');
             navMenu.classList.remove('active');
+            if (overlay) {
+                overlay.classList.remove('active');
+            }
         });
     });
 
@@ -91,14 +107,39 @@ function handleContactForm(e) {
         return;
     }
     
-    // Simular envío
-    showLoading(e.target.querySelector('button[type="submit"]'));
+    // Crear mensaje para WhatsApp
+    const whatsappMessage = createWhatsAppMessage(data);
     
-    setTimeout(() => {
-        hideLoading(e.target.querySelector('button[type="submit"]'));
-        showNotification('¡Mensaje enviado con éxito! Te contactaremos pronto.', 'success');
-        e.target.reset();
-    }, 2000);
+    // Redirigir a WhatsApp
+    const whatsappUrl = `https://wa.me/573506852261?text=${encodeURIComponent(whatsappMessage)}`;
+    window.open(whatsappUrl, '_blank');
+    
+    // Mostrar notificación
+    showNotification('¡Redirigiendo a WhatsApp!', 'success');
+    
+    // Resetear formulario
+    e.target.reset();
+}
+
+// Crear mensaje formateado para WhatsApp
+function createWhatsAppMessage(data) {
+    const destinoText = data.destinoInteres ? 
+        (data.destinoInteres === 'republica-dominicana' ? 'República Dominicana' :
+         data.destinoInteres === 'antioquia' ? 'Antioquia, Colombia' :
+         data.destinoInteres === 'ambos' ? 'Ambos destinos' : 'No especificado') : 'No especificado';
+    
+    return `🌴 *Nuevo mensaje desde Wilrop Colombia Travel*
+
+👤 *Nombre:* ${data.nombre}
+📧 *Email:* ${data.email}
+📱 *Teléfono:* ${data.telefono || 'No proporcionado'}
+🌍 *Destino de interés:* ${destinoText}
+
+💬 *Mensaje:*
+${data.mensaje}
+
+---
+*Enviado desde la web de Wilrop Colombia Travel*`;
 }
 
 // Manejo del formulario de producto

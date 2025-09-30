@@ -130,6 +130,29 @@ body {
     display: none;
     flex-direction: column;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.hamburger:hover {
+    background-color: rgba(44, 90, 160, 0.1);
+}
+
+.hamburger.active {
+    background-color: rgba(44, 90, 160, 0.1);
+}
+
+.hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
 }
 
 .bar {
@@ -137,7 +160,8 @@ body {
     height: 3px;
     background: var(--primary-color);
     margin: 3px 0;
-    transition: 0.3s;
+    transition: all 0.3s ease;
+    border-radius: 2px;
 }
 
 /* Hero Section */
@@ -696,14 +720,67 @@ section {
         transition: 0.3s;
         box-shadow: var(--shadow);
         padding: 2rem 0;
+        z-index: 9999;
+        height: calc(100vh - 110px);
+        overflow-y: auto;
     }
     
     .nav-menu.active {
         left: 0;
     }
     
+    /* Overlay para el menú móvil */
+    .mobile-menu-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 9998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .mobile-menu-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+    
     .nav-menu li {
-        margin: 1rem 0;
+        margin: 0.5rem 0;
+    }
+    
+    .nav-menu .nav-link {
+        display: block;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        font-weight: 500;
+        color: var(--text-dark);
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border-radius: 8px;
+        margin: 0 1rem;
+    }
+    
+    .nav-menu .nav-link:hover {
+        background-color: rgba(44, 90, 160, 0.1);
+        color: var(--primary-color);
+        transform: translateX(5px);
+    }
+    
+    .nav-menu .login-btn {
+        background: var(--primary-color);
+        color: white !important;
+        margin: 1rem;
+        border-radius: 5px;
+        font-weight: 500;
+    }
+    
+    .nav-menu .login-btn:hover {
+        background: #1e3d6f;
+        color: white !important;
     }
     
     .hero-content {
@@ -2023,24 +2100,82 @@ textarea:focus-visible {
 
 /* Estilos para el botón de login en el navbar */
 .login-btn {
-    background: linear-gradient(135deg, #2c5aa0 0%, #3498db 100%);
+    background: var(--primary-color);
     color: white !important;
     padding: 0.5rem 1rem;
-    border-radius: 25px;
+    border-radius: 5px;
     font-weight: 500;
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    transition: background-color 0.3s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
 }
 
 .login-btn:hover {
-    background: linear-gradient(135deg, #1e3d6f 0%, #2980b9 100%);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 15px rgba(44, 90, 160, 0.3);
+    background: #1e3d6f;
+    color: white !important;
 }
 
-.login-btn.active {
-    background: linear-gradient(135deg, #1e3d6f 0%, #2980b9 100%);
-    box-shadow: 0 2px 10px rgba(44, 90, 160, 0.2);
+/* Estilos para información de WhatsApp */
+.whatsapp-info {
+    background: #ffffff;
+    border: 2px solid #25d366;
+    color: #2c3e50;
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin: 1.5rem 0;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.15);
+    position: relative;
+    overflow: hidden;
+}
+
+.whatsapp-info::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, #25d366 0%, #128c7e 100%);
+}
+
+.whatsapp-info i {
+    font-size: 1.8rem;
+    color: #25d366;
+    background: rgba(37, 211, 102, 0.1);
+    padding: 0.8rem;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.whatsapp-info p {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #2c3e50;
+}
+
+/* Responsive para el banner de WhatsApp */
+@media (max-width: 768px) {
+    .whatsapp-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.8rem;
+        padding: 1.2rem;
+    }
+    
+    .whatsapp-info i {
+        font-size: 1.5rem;
+        padding: 0.6rem;
+    }
+    
+    .whatsapp-info p {
+        font-size: 0.9rem;
+    }
 }
 
 /* Estilos para la página de Login */
