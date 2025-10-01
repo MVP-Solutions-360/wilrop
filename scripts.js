@@ -144,17 +144,41 @@ ${data.mensaje}
 
 // Manejo del formulario de producto
 function handleProductoForm(e) {
+    const formEl = e.target;
+    const isServerMode = !!formEl.querySelector('[name="pais"]'); // nuevo formulario (PHP)
+
+    if (isServerMode) {
+        // Validación mínima acorde a la BD
+        const formData = new FormData(formEl);
+        const nombre = (formData.get('nombre') || '').trim();
+        const pais = (formData.get('pais') || '').trim();
+        const precio = parseFloat(formData.get('precio'));
+        const descripcion = (formData.get('descripcion') || '').trim();
+
+        const errors = [];
+        if (!nombre || nombre.length < 3) errors.push('El nombre del producto debe tener al menos 3 caracteres');
+        if (!pais) errors.push('Seleccione un país');
+        if (!Number.isFinite(precio) || precio <= 0) errors.push('El precio debe ser mayor a 0');
+        if (descripcion && descripcion.length < 3) errors.push('La descripción es muy corta');
+
+        if (errors.length > 0) {
+            e.preventDefault();
+            showNotification(errors.join('<br>'), 'error');
+            return;
+        }
+        // Dejar enviar al backend PHP
+        return;
+    }
+
+    // Modo anterior (frontend/localStorage)
     e.preventDefault();
-    
-    const formData = new FormData(e.target);
+    const formData = new FormData(formEl);
     const data = Object.fromEntries(formData);
-    
-    // Validación
+
     if (!validateProductoForm(data)) {
         return;
     }
-    
-    // Procesar datos
+
     const producto = {
         id: Date.now(),
         nombre: data.nombreProducto,
@@ -166,13 +190,12 @@ function handleProductoForm(e) {
         incluye: data.incluyeProducto ? data.incluyeProducto.split(';').map(item => item.trim()) : [],
         fechaCreacion: new Date().toISOString()
     };
-    
-    // Agregar producto
+
     productos.push(producto);
     saveProductos();
-    
+
     showNotification('Producto agregado exitosamente', 'success');
-    e.target.reset();
+    formEl.reset();
 }
 
 // Manejo del formulario de consulta

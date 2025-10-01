@@ -49,7 +49,7 @@ include 'src/admin/conexion.php';
                             </div>
                         </li>
                     <?php else: ?>
-                        <li><a href="src/login_register/login.php" class="nav-link login-btn">Iniciar Sesión</a></li>
+                        <li><a href="src/admin/login.php" class="nav-link login-btn">Iniciar Sesión</a></li>
                     <?php endif; ?>
                 </ul>
                 <div class="hamburger">

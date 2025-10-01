@@ -152,7 +152,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                     </form>
                     
                     <div class="login-footer">
-                        <p>¿No tienes una cuenta? <a href="/register.html" class="register-link">Regístrate aquí</a></p>
+                        <p>¿No tienes una cuenta? <a href="/src/admin/register.php" class="register-link">Regístrate aquí</a></p>
                     </div>
                 </div>
                 

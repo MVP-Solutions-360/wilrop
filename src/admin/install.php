@@ -15,13 +15,24 @@ if (mysqli_connect_errno()) {
 echo "<p style='color: green;'>✓ Conexión a la base de datos exitosa.</p>";
 
 // Leer el archivo SQL
-$sql_file = 'wilrop_database.sql';
-if (!file_exists($sql_file)) {
+$sql_file_candidates = [
+    getcwd() . DIRECTORY_SEPARATOR . 'wilrop_database.sql',
+    dirname(__DIR__, 2) . DIRECTORY_SEPARATOR . 'wilrop_database.sql',
+];
+$sql_file = null;
+foreach ($sql_file_candidates as $candidate) {
+    if (is_file($candidate)) {
+        $sql_file = $candidate;
+        break;
+    }
+}
+if ($sql_file === null) {
     echo "<p style='color: red;'>Error: No se encontró el archivo wilrop_database.sql</p>";
     exit();
 }
 
 $sql_content = file_get_contents($sql_file);
+echo "<p>Usando script SQL: " . htmlspecialchars($sql_file) . "</p>";
 
 // Dividir el contenido en consultas individuales
 $queries = explode(';', $sql_content);
