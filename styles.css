@@ -33,18 +33,6 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
-.header {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    z-index: 1000;
-    box-shadow: var(--shadow);
-    transition: all 0.3s ease;
-}
-
 .navbar {
     padding: 2rem 0;
 }
@@ -423,11 +411,23 @@ section {
 .destino-image {
     height: 200px;
     background: var(--gradient-primary);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    font-size: 4rem;
+    position: relative;
+    overflow: hidden;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
+    padding: 0;
+}
+/* Imagen en destino-card: igual tamaño y centrado que el icono */
+.destino-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 0;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 }
 
 .destino-content {
@@ -556,8 +556,10 @@ section {
     border: 2px solid var(--border-color);
     border-radius: 10px;
     font-size: 1rem;
-    transition: all 0.3s ease;
-    font-family: inherit;
+    color: var(--text-dark);
+    margin: 0;
+    position: static;
+    transform: none;
 }
 
 .form-group input:focus,
@@ -575,10 +577,26 @@ section {
 
 /* Contacto Section */
 .contacto-content {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    align-items: stretch;
+}
+.contacto-info-grid {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+.contacto-form-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.contact-form {
+    max-width: 600px;
+    width: 100%;
 }
 
 .contacto-info {
@@ -620,6 +638,8 @@ section {
     padding: 2.5rem;
     border-radius: 20px;
     box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
 }
 
 .contact-form .form-group {
@@ -3159,4 +3179,87 @@ textarea:focus-visible {
     .itinerary-time {
         align-self: flex-start;
     }
+}
+
+/* Alertas y notificaciones */
+.alert {
+    padding: 1rem;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    font-weight: 500;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert-danger {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-warning {
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffeaa7;
+}
+
+.alert-info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+}
+
+.alert i {
+    margin-right: 0.5rem;
+    font-size: 1.1rem;
+}
+
+/* Dropdown menu para usuario logueado */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 200px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    z-index: 1000;
+    right: 0;
+    top: 100%;
+    margin-top: 0.5rem;
+    border: 1px solid #e9ecef;
+}
+
+.dropdown-menu.show {
+    display: block;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f8f9fa;
+    color: #333;
+}
+
+.dropdown-divider {
+    height: 1px;
+    margin: 0.5rem 0;
+    overflow: hidden;
+    background-color: #e9ecef;
 }

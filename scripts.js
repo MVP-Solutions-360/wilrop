@@ -893,37 +893,9 @@ function handleLogin(e) {
         return;
     }
     
-    // Simular proceso de login (en un proyecto real, esto sería una llamada al servidor)
+    // El formulario se enviará al servidor PHP para procesamiento
+    // No necesitamos JavaScript adicional ya que PHP maneja la autenticación
     showNotification('Iniciando sesión...', 'info');
-    
-    setTimeout(() => {
-        // Simular credenciales válidas para demo
-        if (email === 'admin@wilrop.com' && password === 'admin123') {
-            // Guardar sesión
-            const userData = {
-                email: email,
-                name: 'Usuario Admin',
-                loginTime: new Date().toISOString(),
-                rememberMe: rememberMe
-            };
-            
-            if (rememberMe) {
-                localStorage.setItem('userSession', JSON.stringify(userData));
-            } else {
-                sessionStorage.setItem('userSession', JSON.stringify(userData));
-            }
-            
-            showNotification('¡Bienvenido! Sesión iniciada correctamente', 'success');
-            
-            // Redirigir después de 2 segundos
-            setTimeout(() => {
-                window.location.href = 'index.html';
-            }, 2000);
-            
-        } else {
-            showNotification('Credenciales incorrectas. Intenta con admin@wilrop.com / admin123', 'error');
-        }
-    }, 1500);
 }
 
 // Validar formato de email
@@ -968,14 +940,8 @@ function handleFacebookLogin() {
 
 // Verificar si el usuario está logueado
 function checkUserSession() {
-    const userSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
-    
-    if (userSession) {
-        const userData = JSON.parse(userSession);
-        updateNavbarForLoggedUser(userData);
-        return true;
-    }
-    
+    // En PHP, la sesión se maneja del lado del servidor
+    // Esta función se mantiene para compatibilidad con funcionalidades del frontend
     return false;
 }
 
@@ -1432,14 +1398,14 @@ function stopAutoSlide() {
 document.addEventListener('DOMContentLoaded', function() {
     // Detectar qué página estamos cargando
     const currentPage = window.location.pathname.split('/').pop();
-    
+    // Permitir carrusel en index.php y index.html
     if (currentPage === 'dominicana.html') {
         initDominicanaCarousel();
     } else if (currentPage === 'colombia.html') {
         initColombiaCarousel();
-    } else if (currentPage === 'index.html' || currentPage === '') {
+    } else if (currentPage === 'index.html' || currentPage === 'index.php' || currentPage === '') {
         initCarousel();
-    } else if (currentPage === 'login.html') {
+    } else if (currentPage === 'login.html' || currentPage === 'login.php') {
         initLogin();
     } else if (currentPage === 'product-detail.html') {
         initProductDetail();

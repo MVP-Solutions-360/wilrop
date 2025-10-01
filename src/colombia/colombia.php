@@ -1,0 +1,411 @@
+<?php
+// Puedes agregar lógica PHP aquí si lo necesitas en el futuro
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colombia - Wilrop Colombia Travel</title>
+    <meta name="description" content="Descubre Colombia con Wilrop Colombia Travel. Diversidad cultural, paisajes únicos, café de calidad mundial y la calidez de su gente.">
+    <link rel="stylesheet" href="../../styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="">
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <div class="logo-container">
+                        <img src="../../imagenes/logos/wilrop_vertical.png" alt="Wilrop Colombia Travel" class="logo-image">
+                        <div class="logo-text">
+                            <h6>Wilrop Colombia Travel</h6>
+                        </div>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="../../index.php" class="nav-link">Inicio</a></li>
+                    <li><a href="../dominicana/dominicana.php" class="nav-link">República Dominicana</a></li>
+                    <li><a href="colombia.php" class="nav-link active">Colombia</a></li>
+                    <li><a href="../../index.php#servicios" class="nav-link">Servicios</a></li>
+                    <li><a href="../../products.html" class="nav-link">Productos</a></li>
+                    <li><a href="../../admin.php" class="nav-link">Admin</a></li>
+                    <li><a href="../../index.php#contacto" class="nav-link">Contacto</a></li>
+                    <li><a href="../../src/login_register/login.php" class="nav-link login-btn">Iniciar Sesión</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </div>
+        </nav>
+        <!-- Overlay para menú móvil -->
+        <div class="mobile-menu-overlay"></div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero colombia-hero">
+        <!-- Carrusel de Imágenes -->
+        <div class="hero-carousel" id="colombiaCarousel">
+            <!-- Las imágenes se cargarán dinámicamente aquí -->
+        </div>
+        <!-- Controles del Carrusel -->
+        <div class="carousel-controls">
+            <button class="carousel-btn prev" onclick="changeSlideCol(-1)">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+            <button class="carousel-btn next" onclick="changeSlideCol(1)">
+                <i class="fas fa-chevron-right"></i>
+            </button>
+        </div>
+        <!-- Indicadores -->
+        <div class="carousel-indicators" id="colombiaIndicators">
+            <!-- Los indicadores se generarán dinámicamente aquí -->
+        </div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <h2>Colombia</h2>
+                <p>Descubre la diversidad de Colombia: desde las montañas andinas hasta las playas del Caribe, pasando por la selva amazónica y ciudades coloniales llenas de historia.</p>
+                <div class="hero-buttons">
+                    <a href="#destinos" class="btn btn-primary">Explorar Destinos</a>
+                    <a href="#antioquia" class="btn btn-secondary">Conocer Antioquia</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Destinos Principales -->
+    <section id="destinos" class="destinos">
+        <div class="container">
+            <div class="section-header">
+                <h2>Destinos Imperdibles</h2>
+                <p>Explora la diversidad de Colombia</p>
+            </div>
+            <div class="destinos-grid">
+                <div class="destino-card">
+                    <div class="destino-image bogota">
+                        <i class="fas fa-city"></i>
+                    </div>
+                    <div class="destino-content">
+                        <h3>Bogotá</h3>
+                        <p>La capital del país, una metrópolis moderna que combina historia colonial, arte contemporáneo y una vibrante vida cultural.</p>
+                        <ul>
+                            <li>Centro Histórico La Candelaria</li>
+                            <li>Museo del Oro</li>
+                            <li>Monserrate</li>
+                            <li>Zona Rosa</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-image cartagena">
+                        <i class="fas fa-fort-awesome"></i>
+                    </div>
+                    <div class="destino-content">
+                        <h3>Cartagena</h3>
+                        <p>La joya del Caribe colombiano, con su arquitectura colonial, murallas históricas y playas paradisíacas.</p>
+                        <ul>
+                            <li>Ciudad Amurallada</li>
+                            <li>Islas del Rosario</li>
+                            <li>Playa Blanca</li>
+                            <li>Gastronomía local</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-image medellin">
+                        <i class="fas fa-seedling"></i>
+                    </div>
+                    <div class="destino-content">
+                        <h3>Medellín</h3>
+                        <p>La ciudad de la eterna primavera, innovadora y transformada, conocida por su clima perfecto y gente cálida.</p>
+                        <ul>
+                            <li>Comuna 13</li>
+                            <li>Museo de Antioquia</li>
+                            <li>Metrocable</li>
+                            <li>Feria de las Flores</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="destino-card">
+                    <div class="destino-image cali">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <div class="destino-content">
+                        <h3>Cali</h3>
+                        <p>La capital mundial de la salsa, donde la música y el baile son parte de la vida cotidiana de sus habitantes.</p>
+                        <ul>
+                            <li>Feria de Cali</li>
+                            <li>Escuelas de salsa</li>
+                            <li>Centro histórico</li>
+                            <li>Vida nocturna</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Especial Antioquia -->
+    <section id="antioquia" class="antioquia-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Antioquia</h2>
+                <p>El corazón de Colombia, donde la tradición paisa se encuentra con la modernidad</p>
+            </div>
+            <div class="antioquia-hero">
+                <div class="antioquia-content">
+                    <h3>La Tierra Paisa</h3>
+                    <p>Antioquia es mucho más que Medellín. Es una región llena de pueblos coloniales, paisajes montañosos, fincas cafeteras y una cultura única que define la identidad colombiana.</p>
+                </div>
+                <div class="antioquia-image">
+                    <div class="image-placeholder antioquia-placeholder">
+                        <i class="fas fa-mountain"></i>
+                        <p>Paisajes de Antioquia</p>
+                    </div>
+                </div>
+            </div>
+            <div class="antioquia-destinos">
+                <h3>Destinos Antioqueños</h3>
+                <div class="antioquia-grid">
+                    <div class="antioquia-card">
+                        <div class="antioquia-card-image guatape">
+                            <i class="fas fa-rocket"></i>
+                        </div>
+                        <div class="antioquia-card-content">
+                            <h4>Guatapé</h4>
+                            <p>El pueblo más colorido de Colombia, famoso por su Peñol y sus casas con zócalos pintados.</p>
+                            <ul>
+                                <li>La Piedra del Peñol</li>
+                                <li>Embalse de Guatapé</li>
+                                <li>Arquitectura colorida</li>
+                                <li>Deportes acuáticos</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="antioquia-card">
+                        <div class="antioquia-card-image santa-fe">
+                            <i class="fas fa-church"></i>
+                        </div>
+                        <div class="antioquia-card-content">
+                            <h4>Santa Fe de Antioquia</h4>
+                            <p>La primera capital de Antioquia, un pueblo colonial que parece detenido en el tiempo.</p>
+                            <ul>
+                                <li>Centro histórico colonial</li>
+                                <li>Puente de Occidente</li>
+                                <li>Iglesias centenarias</li>
+                                <li>Clima cálido</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="antioquia-card">
+                        <div class="antioquia-card-image jardin">
+                            <i class="fas fa-tree"></i>
+                        </div>
+                        <div class="antioquia-card-content">
+                            <h4>Jardín</h4>
+                            <p>Un pueblo mágico rodeado de montañas, conocido por su arquitectura colonial y su café de calidad.</p>
+                            <ul>
+                                <li>Plaza principal</li>
+                                <li>Basílica Menor</li>
+                                <li>Fincas cafeteras</li>
+                                <li>Ecoturismo</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="antioquia-card">
+                        <div class="antioquia-card-image jerico">
+                            <i class="fas fa-cross"></i>
+                        </div>
+                        <div class="antioquia-card-content">
+                            <h4>Jericó</h4>
+                            <p>El pueblo de la Madre Laura, un lugar de peregrinación y tradición religiosa en medio de montañas.</p>
+                            <ul>
+                                <li>Basílica de Nuestra Señora</li>
+                                <li>Museo de la Madre Laura</li>
+                                <li>Artesanías locales</li>
+                                <li>Peregrinaciones</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="cultura-paisa">
+                <h3>Cultura Paisa</h3>
+                <div class="cultura-paisa-content">
+                    <div class="cultura-paisa-text">
+                        <p>La cultura paisa es única en Colombia. Conocida por su hospitalidad, emprendimiento y tradiciones, Antioquia ha dado al país algunos de sus personajes más importantes y ha desarrollado una identidad cultural distintiva.</p>
+                        <div class="cultura-highlights">
+                            <div class="highlight">
+                                <i class="fas fa-coffee"></i>
+                                <div>
+                                    <h4>Café de Calidad</h4>
+                                    <p>El café antioqueño es reconocido mundialmente por su sabor y calidad excepcional</p>
+                                </div>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-home"></i>
+                                <div>
+                                    <h4>Arquitectura Paisa</h4>
+                                    <p>Casas con balcones, patios internos y una arquitectura que refleja la tradición familiar</p>
+                                </div>
+                            </div>
+                            <div class="highlight">
+                                <i class="fas fa-utensils"></i>
+                                <div>
+                                    <h4>Gastronomía</h4>
+                                    <p>Bandeja paisa, arepa antioqueña, mondongo y otros platos tradicionales únicos</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="cultura-paisa-image">
+                        <div class="image-placeholder cultura-paisa-placeholder">
+                            <i class="fas fa-coffee"></i>
+                            <p>Cultura y tradiciones paisas</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experiencias Únicas -->
+    <section class="experiencias">
+        <div class="container">
+            <div class="section-header">
+                <h2>Experiencias Únicas en Colombia</h2>
+                <p>Vive momentos inolvidables en el país más acogedor del mundo</p>
+            </div>
+            <div class="experiencias-grid">
+                <div class="experiencia-card">
+                    <div class="experiencia-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <h3>Tour del Café</h3>
+                    <p>Visita fincas cafeteras tradicionales y aprende sobre el proceso del café desde la semilla hasta la taza.</p>
+                </div>
+                <div class="experiencia-card">
+                    <div class="experiencia-icon">
+                        <i class="fas fa-mountain"></i>
+                    </div>
+                    <h3>Ecoturismo</h3>
+                    <p>Explora parques nacionales, avista aves exóticas y descubre la biodiversidad única de Colombia.</p>
+                </div>
+                <div class="experiencia-card">
+                    <div class="experiencia-icon">
+                        <i class="fas fa-music"></i>
+                    </div>
+                    <h3>Música y Danza</h3>
+                    <p>Sumérgete en la salsa, el vallenato, la cumbia y otros ritmos que definen la cultura colombiana.</p>
+                </div>
+                <div class="experiencia-card">
+                    <div class="experiencia-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3>Esmeraldas y Oro</h3>
+                    <p>Descubre la tradición minera de Colombia y aprende sobre las esmeraldas y el oro precolombino.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Información Práctica -->
+    <section class="info-practica">
+        <div class="container">
+            <div class="section-header">
+                <h2>Información Práctica</h2>
+                <p>Todo lo que necesitas saber para tu viaje a Colombia</p>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <i class="fas fa-passport"></i>
+                    <h3>Documentación</h3>
+                    <p>Pasaporte válido por 6 meses. No se requiere visa para estancias menores a 90 días.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-dollar-sign"></i>
+                    <h3>Moneda</h3>
+                    <p>Peso Colombiano (COP). Se acepta USD en algunos establecimientos turísticos.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-language"></i>
+                    <h3>Idioma</h3>
+                    <p>Español es el idioma oficial. Inglés hablado en zonas turísticas principales.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <h3>Clima</h3>
+                    <p>Diverso según la región. Zona cafetera: 18-24°C. Caribe: 25-30°C. Bogotá: 10-20°C.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Vuelos</h3>
+                    <p>Vuelos directos desde República Dominicana a Bogotá, Medellín y Cartagena.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>Seguridad</h3>
+                    <p>Colombia es un destino seguro para turistas. Se recomienda seguir las recomendaciones locales.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>¿Listo para descubrir Colombia?</h2>
+                <p>Contáctanos y planifica tu aventura en el país más acogedor del mundo</p>
+                <div class="cta-buttons">
+                    <a href="../../index.php#contacto" class="btn btn-primary">Contactar Ahora</a>
+                    <a href="../../products.html" class="btn btn-secondary">Ver Paquetes</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Wilrop Colombia Travel</h3>
+                    <p>Especialistas en turismo entre República Dominicana y Colombia. Tu agencia de confianza para experiencias únicas.</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Destinos</h4>
+                    <ul>
+                        <li><a href="../dominicana/dominicana.php">República Dominicana</a></li>
+                        <li><a href="colombia.php">Colombia</a></li>
+                        <li><a href="colombia.php#antioquia">Antioquia</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Enlaces Rápidos</h4>
+                    <ul>
+                        <li><a href="../../index.php">Inicio</a></li>
+                        <li><a href="../../products.html">Productos</a></li>
+                        <li><a href="../../admin.php">Admin</a></li>
+                        <li><a href="../../index.php#contacto">Contacto</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contacto</h4>
+                    <p><i class="fas fa-phone"></i> +1 (809) 123-4567</p>
+                    <p><i class="fas fa-envelope"></i> info@wilropcolombia.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Wilrop Colombia Travel. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../scripts.js"></script>
+</body>
+</html>
